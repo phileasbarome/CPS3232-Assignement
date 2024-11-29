@@ -1,0 +1,38 @@
+import matplotlib.pyplot as plt
+
+class LCG:
+    def __init__(self, seed, a=1664525, c=1013904223, m=2**32):
+        self.state = seed
+        self.a = a
+        self.c = c
+        self.m = m
+
+    def next(self):
+        self.state = (self.a * self.state + self.c) % self.m
+        return self.state
+
+    def next_range(self, low, high):
+        return low + self.next() % (high - low + 1)
+
+# Generate random numbers and visualize
+lcg = LCG(seed=12345)
+numbers = [lcg.next() for _ in range(10000)]
+
+# Histogram
+plt.hist(numbers, bins=50, color='blue', alpha=0.7)
+plt.title("Histogram of LCG Outputs")
+plt.xlabel("Value")
+plt.ylabel("Frequency")
+plt.show()
+
+# Scatter plot
+x_values = range(len(numbers) - 1)
+y_values = numbers[:-1]  # Current number
+next_values = numbers[1:]  # Next number
+
+plt.scatter(x_values, y_values, alpha=0.5, s=10, label="LCG Pairs")
+plt.title("Scatter Plot of LCG Pairs")
+plt.xlabel("Index")
+plt.ylabel("LCG Output")
+plt.legend()
+plt.show()
