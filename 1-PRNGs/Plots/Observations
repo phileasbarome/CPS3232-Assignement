@@ -1,0 +1,40 @@
+1. Histogram Analysis
+A histogram shows the frequency of generated numbers across their range.
+
+Ideal Behavior:
+
+The distribution should appear uniform, with all bins having roughly equal counts, indicating the generator produces numbers evenly distributed across the range.
+What to Observe:
+
+Uniformity: Check whether all ranges of numbers are equally represented.
+Clustering: Look for patterns where certain ranges have disproportionately high or low frequencies.
+Periodicity: Some LCG parameters may lead to repeating patterns in specific ranges, causing spikes in certain bins.
+
+
+2. Scatter Plot Analysis
+A scatter plot reveals sequential relationships between numbers (e.g., (𝑋𝑖,𝑋𝑖+1)(Xi,Xi+1)).
+
+Ideal Behavior:
+
+The points should appear scattered randomly without forming lines, clusters, or distinct shapes.
+This randomness suggests that the generator doesn't have obvious correlations between consecutive numbers.
+
+What to Observe:
+
+Correlations: Check for visible patterns, such as lines or grids, indicating dependency between consecutive values.
+Periodic Patterns: LCGs are known to have cycles. If the modulus 𝑚 is small or poorly chosen, points may form repetitive patterns.
+Density: Check if points are more concentrated in certain areas, indicating biased or non-random behavior.
+
+3. Documenting Observations
+
+After generating 10,000 random numbers using the Linear Congruential Generator (LCG) and visualizing the results with a histogram and scatter plot, the following patterns were observed:
+
+Scatter Plot:
+
+Short Range: When the range of values ([𝑙𝑜𝑤,ℎ𝑖𝑔ℎ][low,high]) is small, the scatter plot exhibits distinct lines. This is because the reduced range confines the output to a limited subset of values, amplifying the visible correlation between consecutive numbers.
+
+Small Modulus (𝑚): When the modulus 𝑚 is small, the scatter plot similarly displays linear patterns or grids. This occurs due to the periodicity and limited number of possible values that the generator can produce, leading to predictable sequences.
+
+Histogram:
+
+Peaks at Range Edges: The histogram shows pronounced peaks near the boundaries of the range. This suggests that certain values or regions within the range are more likely to occur, indicating a bias in the distribution of generated numbers. This effect is amplified by the choice of LCG parameters (𝑎,𝑐,𝑚,a,c,m) and their interaction with the range.

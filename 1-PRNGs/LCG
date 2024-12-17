@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 class LCG:
-    def __init__(self, seed, a=1664525, c=1013904223, m=2**32):
+    def __init__(self, seed, a=1664525, c=1013904223, m=2**3):
         self.state = seed
         self.a = a
         self.c = c
@@ -16,6 +16,8 @@ class LCG:
 
 # Generate random numbers and visualize
 lcg = LCG(seed=12345)
+
+# Without range
 numbers = [lcg.next() for _ in range(10000)]
 
 # Histogram
@@ -32,6 +34,31 @@ next_values = numbers[1:]  # Next number
 
 plt.scatter(x_values, y_values, alpha=0.5, s=10, label="LCG Pairs")
 plt.title("Scatter Plot of LCG Pairs")
+plt.xlabel("Index")
+plt.ylabel("LCG Output")
+plt.legend()
+plt.show()
+
+# With range 
+
+# Generate random numbers within a range ( 0 to 100)
+low, high = 0, 100
+numbers_in_range = [lcg.next_range(low, high) for _ in range(10000)]
+
+# Plot histogram of numbers in range
+plt.hist(numbers_in_range, bins=20, color='blue', alpha=0.7)
+plt.title(f"Histogram of LCG Outputs in Range [{low}, {high}]")
+plt.xlabel("Value")
+plt.ylabel("Frequency")
+plt.show()
+
+# Scatter plot showing sequential relationships in the range
+x_values = range(len(numbers_in_range) - 1)
+y_values = numbers_in_range[:-1]  # Current value
+next_values = numbers_in_range[1:]  # Next value
+
+plt.scatter(x_values, y_values, alpha=0.5, s=10, label="LCG Pairs in Range")
+plt.title(f"Scatter Plot of LCG Pairs in Range [{low}, {high}]")
 plt.xlabel("Index")
 plt.ylabel("LCG Output")
 plt.legend()
