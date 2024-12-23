@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 class LCG:
-    def __init__(self, seed, a=1664525, c=1013904223, m=2**3):
+    def __init__(self, seed, a=1664525, c=1013904223, m=2**32):
         self.state = seed
         self.a = a
         self.c = c
@@ -17,7 +17,7 @@ class LCG:
 # Generate random numbers and visualize
 lcg = LCG(seed=12345)
 
-# Without range
+## Without range
 numbers = [lcg.next() for _ in range(10000)]
 
 # Histogram
@@ -39,7 +39,7 @@ plt.ylabel("LCG Output")
 plt.legend()
 plt.show()
 
-# With range 
+## With range 
 
 # Generate random numbers within a range ( 0 to 100)
 low, high = 0, 100
