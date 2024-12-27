@@ -1,0 +1,26 @@
+Parameters to Experiment With:
+
+1. Multiplier (𝑎) 
+The choice of 𝑎 directly affects the quality of the randomness. 
+Small values of 𝑎 tend to result in more predictable patterns, making predictions easier.
+Better values for 𝑎 are usually large prime numbers chosen carefully to maximize the period of the LCG.
+
+2. Increment (𝑐)
+The constant 𝑐 adds a shift to the sequence and ensures no zero cycle in the output.
+If 𝑐 is 0, the LCG becomes highly predictable and periodic.
+Use a large 𝑐 to reduce predictability.
+
+3. Modulus (𝑚)
+𝑚 determines the range of values.
+Smaller values of 𝑚 lead to more frequent patterns and easier predictions.
+Increasing 𝑚 makes the sequence harder to predict, as the state space becomes larger.
+
+4. Seed (𝑋0)
+The starting value 𝑋0 initializes the generator and affects the sequence.
+Using the same seed every time makes sequences predictable, while randomizing 𝑋0 increases unpredictability.
+
+5. Number of Tokens Used for Prediction
+Use different numbers of prior tokens (𝑥1,𝑥2,𝑥3,…) for prediction. 
+For instance:
+Using 2 tokens may lead to less accurate predictions.
+Using 3 or more tokens improves accuracy since LCG parameters can be better inferred.

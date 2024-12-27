@@ -14,8 +14,8 @@ class LCG:
     def next_range(self, low, high):
         return low + self.next() % (high - low + 1)
 
-lcg = LCG(seed=12345, a=1664525, c=1013904223, m=2**32)
-
+lcg = LCG(seed=12345, a=1103515245, c=1013904223, m=2**32)
+print("a=1103515245, c=1013904223, m=2**32")
 
 # Example of token generation
 tokens = [lcg.next() for _ in range(5)]
