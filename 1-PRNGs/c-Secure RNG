@@ -1,0 +1,8 @@
+import secrets
+
+def secure_token():
+    return secrets.token_hex(16)
+
+tokens = [secure_token() for _ in range(5)]
+print("Secure Tokens:", tokens)
+
